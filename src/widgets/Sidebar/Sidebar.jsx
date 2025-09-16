@@ -1,13 +1,9 @@
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
+import { navigationItems as items } from "@shared/config/index";
 import s from "./Sidebar.module.scss";
 
 export const Sidebar = () => {
-  const items = [
-    { id: "home", label: "Главная", icon: "🏠", path: "/" },
-    { id: "citizens", label: "Картотека", icon: "📂", path: "/citizens" },
-  ];
-
   return (
     <aside className={s.sidebar}>
       <div className={s.logo}>Dashboard</div>
