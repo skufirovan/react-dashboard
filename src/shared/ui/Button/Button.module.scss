@@ -1,0 +1,27 @@
+@use "@app/styles/variables.scss" as *;
+
+.button {
+  padding: 0.75rem 1.5rem;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: $color-primary;
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: #2563eb;
+  }
+
+  &:active:not(:disabled) {
+    background-color: #1d4ed8;
+  }
+}

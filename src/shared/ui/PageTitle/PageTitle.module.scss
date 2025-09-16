@@ -1,0 +1,11 @@
+@use "@app/styles/variables.scss" as *;
+
+.title {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: $radius-md;
+  box-shadow: $shadow-md;
+}
