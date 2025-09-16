@@ -1,0 +1,19 @@
+@use "@app/styles/variables.scss" as *;
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main {
+  background-color: $color-light;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: $sidebar-width;
+}
+
+.page {
+  flex: 1;
+  padding: 1rem;
+}
