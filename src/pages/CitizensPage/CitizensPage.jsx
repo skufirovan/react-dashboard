@@ -1,3 +1,5 @@
+import { CitizenList } from "@widgets/index";
+
 export const CitizensPage = () => {
-  return <h1>CitizensPage</h1>;
+  return <CitizenList />;
 };
