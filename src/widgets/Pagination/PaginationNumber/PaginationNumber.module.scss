@@ -1,0 +1,42 @@
+@use "@app/styles/variables.scss" as *;
+@use "@app/styles/mixins.scss" as mixins;
+
+.number {
+  @include mixins.square-button(40px);
+  @include mixins.flex-center;
+  @include mixins.text-sm;
+  @include mixins.shadow-base;
+  text-decoration: none;
+}
+
+.first {
+  border-top-left-radius: $radius-md;
+  border-bottom-left-radius: $radius-md;
+}
+
+.last {
+  border-top-right-radius: $radius-md;
+  border-bottom-right-radius: $radius-md;
+}
+
+.single {
+  border-radius: $radius-md;
+}
+
+.middle {
+  color: $color-light-gray;
+  cursor: default;
+}
+
+.active {
+  z-index: 10;
+  color: #ffffff;
+  background-color: $color-primary;
+  cursor: default;
+}
+
+.inactive {
+  &:hover:not(.middle) {
+    @include mixins.shadow-hover;
+  }
+}

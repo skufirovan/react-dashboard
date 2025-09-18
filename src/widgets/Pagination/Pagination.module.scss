@@ -1,0 +1,12 @@
+@use "@app/styles/variables.scss" as *;
+@use "@app/styles/mixins.scss" as mixins;
+
+.pagination {
+  @include mixins.flex-center;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.info {
+  @include mixins.text-sm;
+}

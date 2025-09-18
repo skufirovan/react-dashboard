@@ -1,0 +1,34 @@
+@use "@app/styles/variables.scss" as *;
+@use "@app/styles/mixins.scss" as mixins;
+
+.arrow {
+  @include mixins.square-button(40px);
+  @include mixins.flex-center;
+  @include mixins.shadow-base;
+  color: $color-gray;
+  border-radius: $radius-md;
+}
+
+.disabled {
+  color: $color-light-gray;
+  pointer-events: none;
+}
+
+.enabled {
+  &:hover {
+    @include mixins.shadow-hover;
+  }
+}
+
+.left {
+  margin-right: 0.5rem;
+}
+
+.right {
+  margin-left: 0.5rem;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}

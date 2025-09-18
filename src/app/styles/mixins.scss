@@ -1,0 +1,42 @@
+@use "./variables.scss" as *;
+
+@mixin square-button($size: 40px) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $size;
+  height: $size;
+}
+
+@mixin card {
+  background: white;
+  border-radius: $radius-md;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin text-sm {
+  color: $color-gray;
+  font-size: 0.9rem;
+}
+
+@mixin shadow-base {
+  box-shadow: $shadow-sm;
+  transition: box-shadow 0.2s ease;
+}
+
+@mixin shadow-hover {
+  box-shadow: $shadow-md;
+}
+
+@mixin shadow-element {
+  @include shadow-base;
+
+  &:hover {
+    @include shadow-hover;
+  }
+}
