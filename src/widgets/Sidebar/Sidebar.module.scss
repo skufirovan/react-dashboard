@@ -2,6 +2,7 @@
 
 .sidebar {
   position: fixed;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   width: $sidebar-width;
