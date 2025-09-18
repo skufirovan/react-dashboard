@@ -12,9 +12,12 @@
 }
 
 .logo {
+  width: fit-content;
   margin-bottom: 2rem;
+  color: inherit;
   font-weight: 700;
   font-size: 1.25rem;
+  text-decoration: none;
 }
 
 .nav {

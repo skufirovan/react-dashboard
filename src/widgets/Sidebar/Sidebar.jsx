@@ -6,7 +6,9 @@ import s from "./Sidebar.module.scss";
 export const Sidebar = () => {
   return (
     <aside className={s.sidebar}>
-      <div className={s.logo}>Dashboard</div>
+      <NavLink to="/" className={s.logo}>
+        Dashboard
+      </NavLink>
       <nav className={s.nav}>
         {items.map(item => (
           <NavLink
