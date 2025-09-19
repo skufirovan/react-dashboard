@@ -1,3 +1,5 @@
+import { match } from "path-to-regexp";
+
 export const navigationConfig = {
   items: [
     {
@@ -14,13 +16,27 @@ export const navigationConfig = {
       label: "Картотека",
       title: "Картотека граждан",
     },
+    {
+      id: "citizen-detail",
+      path: "/citizens/:id",
+      title: "Профиль гражданина",
+    },
   ],
 
   getTitleByPath: pathname => {
-    const item = navigationConfig.items.find(item => item.path === pathname);
-    return item ? item.title : "Страница";
+    for (const item of navigationConfig.items) {
+      const matcher = match(item.path, { decode: decodeURIComponent });
+      const result = matcher(pathname);
+      if (result) return item.title;
+    }
+
+    return "Страница";
+  },
+
+  getSidebarItems: () => {
+    return navigationConfig.items.filter(item => item.label && item.icon);
   },
 };
 
-export const navigationItems = navigationConfig.items;
+export const sidebarItems = navigationConfig.getSidebarItems;
 export const getPageTitle = navigationConfig.getTitleByPath;
