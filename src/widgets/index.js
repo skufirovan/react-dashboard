@@ -1,3 +1,6 @@
+export * from "./AgeChart/AgeChart";
+export * from "./AgeExperienceChart/AgeExperienceChart";
+export * from "./BirthPlaceChart/BirthPlaceChart";
 export * from "./CitizenList/CitizenList";
 export * from "./Pagination/Pagination";
 export * from "./Search/Search";

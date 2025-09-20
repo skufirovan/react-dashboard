@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout/AppLayout";
 import { CitizenPage, CitizensPage, HomePage } from "../pages";
+import "@shared/config/charts";
 
 const App = () => {
   return (
