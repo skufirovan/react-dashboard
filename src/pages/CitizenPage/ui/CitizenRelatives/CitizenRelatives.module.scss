@@ -1,0 +1,14 @@
+@use "@app/styles/variables.scss" as *;
+@use "@app/styles/mixins.scss" as m;
+
+.relation {
+  @include m.title;
+}
+
+.name {
+  @include m.subtitle;
+}
+
+.phone {
+  @include m.meta;
+}

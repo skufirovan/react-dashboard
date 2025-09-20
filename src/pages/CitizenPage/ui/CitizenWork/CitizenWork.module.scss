@@ -1,0 +1,14 @@
+@use "@app/styles/variables.scss" as *;
+@use "@app/styles/mixins.scss" as m;
+
+.position {
+  @include m.title;
+}
+
+.company {
+  @include m.subtitle;
+}
+
+.dates {
+  @include m.meta;
+}

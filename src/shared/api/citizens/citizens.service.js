@@ -38,7 +38,12 @@ export const citizensService = {
     if (!citizen) return [];
 
     return citizen.relatives
-      .map(relative => citizensService.getCitizenById(relative.id))
+      .map(relative => {
+        const relativeData = citizensService.getCitizenById(relative.id);
+        return relativeData
+          ? { ...relativeData, relation: relative.relation }
+          : null;
+      })
       .filter(Boolean);
   },
 

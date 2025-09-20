@@ -89,7 +89,7 @@ export const citizens = [
     firstName: "Сергей",
     middleName: "Иванович",
     birthDate: "2007-04-10",
-    birthPlace: "Саранкс",
+    birthPlace: "Саранск",
     citizenship: "Россия",
     address: "г. Саранск, ул. Барабаса, д. 10, кв. 45",
     passport: null,
