@@ -4,8 +4,8 @@
 .search {
   position: relative;
   display: flex;
+  flex: 1;
   flex-shrink: 0;
-  margin-bottom: 1rem;
 }
 
 .label {

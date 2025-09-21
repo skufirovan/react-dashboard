@@ -1,20 +1,67 @@
 import { citizens } from "../../mocks/citizens";
 import { ITEMS_PER_CITIZENS_PAGE } from "../../config/constants";
+import { calculateAge, calculateExperienceYears } from "../../lib/utils";
 
 export const citizensService = {
-  searchCitizens: (query, currentPage = 1) => {
-    const offset = (currentPage - 1) * ITEMS_PER_CITIZENS_PAGE;
-
+  filterByText: query => {
     if (!query.trim()) {
-      return citizens.slice(offset, offset + ITEMS_PER_CITIZENS_PAGE);
+      return citizens;
     }
 
     const searchTerm = query.toLowerCase().trim();
-    const filteredCitizens = citizens.filter(citizen =>
+    const filtered = citizens.filter(citizen =>
       citizensService.matchCitizen(citizen, searchTerm)
     );
 
-    return filteredCitizens.slice(offset, offset + ITEMS_PER_CITIZENS_PAGE);
+    return filtered;
+  },
+
+  filterCitizens: (filters = {}, currentPage = 1) => {
+    const offset = (currentPage - 1) * ITEMS_PER_CITIZENS_PAGE;
+
+    let filtered = citizens;
+
+    if (filters.query) {
+      filtered = citizensService.filterByText(filters.query, currentPage);
+    }
+
+    if (filters.age) {
+      filtered = filtered.filter(c => {
+        const age = calculateAge(c.birthDate);
+        return age >= filters.age.min && age <= filters.age.max;
+      });
+    }
+
+    if (filters.experience) {
+      filtered = filtered.filter(c => {
+        const years = calculateExperienceYears(c.workExperience);
+        return (
+          years >= filters.experience.min && years <= filters.experience.max
+        );
+      });
+    }
+
+    if (filters.education) {
+      console.log(filters.education);
+      filtered = filtered.filter(c =>
+        c.education?.some(e =>
+          e.degree.toLowerCase().includes(filters.education)
+        )
+      );
+    }
+
+    if (filters.hasRelatives !== undefined) {
+      filtered = filtered.filter(c =>
+        filters.hasRelatives ? c.relatives.length > 0 : c.relatives.length === 0
+      );
+    }
+
+    const result = {
+      citizens: filtered.slice(offset, offset + ITEMS_PER_CITIZENS_PAGE),
+      count: filtered.length,
+    };
+
+    return result;
   },
 
   matchCitizen: (citizen, searchTerm) => {

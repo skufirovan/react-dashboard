@@ -439,7 +439,7 @@ export const citizens = [
     email: "olga.popova@example.com",
     education: [
       {
-        degree: "Высшее",
+        degree: "Бакалавриат",
         institution: "ВГУ",
         startDate: "2000-09-01",
         endDate: "2005-06-30",
@@ -485,7 +485,7 @@ export const citizens = [
     email: "mikhail.sokolov@example.com",
     education: [
       {
-        degree: "Высшее",
+        degree: "Бакалавриат",
         institution: "КубГУ",
         startDate: "1993-09-01",
         endDate: "1998-06-30",

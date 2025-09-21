@@ -19,8 +19,8 @@
   align-items: center;
 }
 
-@mixin text-sm {
-  color: $color-gray;
+@mixin text-sm($color: $color-gray) {
+  color: $color;
   font-size: 0.9rem;
 }
 

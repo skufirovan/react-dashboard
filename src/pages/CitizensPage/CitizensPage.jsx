@@ -1,21 +1,27 @@
 import { useSearchParams } from "react-router-dom";
 import { citizensService } from "@shared/api/index";
 import { ITEMS_PER_CITIZENS_PAGE } from "@shared/config/constants";
-import { CitizenList, Pagination, Search } from "@widgets/index";
+import { CitizenList, Pagination, Search, Filters } from "@widgets/index";
+import { parseFilters } from "./lib/utils";
 import s from "./CitizensPage.module.scss";
 
 export const CitizensPage = () => {
   const [searchParams] = useSearchParams();
-  const query = searchParams.get("query") || "";
+  const filters = parseFilters(searchParams);
   const currentPage = Number(searchParams.get("page")) || 1;
-  const totalPages = Math.ceil(
-    citizensService.getTotalCount() / ITEMS_PER_CITIZENS_PAGE
+  const { citizens, count } = citizensService.filterCitizens(
+    filters,
+    currentPage
   );
+  const totalPages = Math.ceil(count / ITEMS_PER_CITIZENS_PAGE);
 
   return (
     <div className={s.citizensPage}>
-      <Search placeholder="Поиск..." />
-      <CitizenList query={query} currentPage={currentPage} />
+      <div className={s.searchContainer}>
+        <Search placeholder="Поиск..." />
+        <Filters />
+      </div>
+      <CitizenList citizens={citizens} />
       <Pagination totalPages={totalPages} />
     </div>
   );
